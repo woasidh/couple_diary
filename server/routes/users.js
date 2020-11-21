@@ -18,7 +18,8 @@ router.get("/auth", auth, (req, res) => {
         lastname: req.user.lastname,
         role: req.user.role,
         image: req.user.image,
-        isCouple: req.user.isCouple
+        isCouple: req.user.isCouple,
+        coupleId: req.user.coupleId
     });
 });
 
@@ -70,7 +71,6 @@ router.get("/logout", auth, (req, res) => {
 });
 
 router.post("/code", auth, (req, res) => {
-    console.log(req.body)
     //set filter
     let filter = {
         _id : req.user._id

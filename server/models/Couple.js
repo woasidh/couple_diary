@@ -16,8 +16,8 @@ const coupleSchema = mongoose.Schema({
         default: ""
     },
     images:{
-        type: Array,
-        default: []
+        type: String,
+        default: ""
     }
 })
 

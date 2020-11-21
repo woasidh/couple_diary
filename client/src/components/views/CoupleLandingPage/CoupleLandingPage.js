@@ -21,6 +21,11 @@ function CoupleLandingPage() {
         setSelectedMenu(item.key)
     }
 
+    const changeMenu=()=>{
+        console.log('hihi')
+        setSelectedMenu("1")
+    }
+
     const handleContentHandler = () => {
         switch (SelectedMenu) {
             case '1':
@@ -32,7 +37,7 @@ function CoupleLandingPage() {
             case '4':
                 return <Bucket />
             case '5':
-                return <Setting />
+                return <Setting passMenuSelector={changeMenu}/>
         }
     }
 

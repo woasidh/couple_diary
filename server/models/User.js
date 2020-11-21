@@ -45,6 +45,10 @@ const userSchema = mongoose.Schema({
     connectTokenExp:{
         type: String,
         default: ""
+    },
+    coupleId: {
+        type: String,
+        default: ""
     }
 })
 
@@ -77,8 +81,6 @@ userSchema.methods.comparePassword = function(plainPassword,cb){
 
 userSchema.methods.generateToken = function(cb) {
     var user = this;
-    console.log('user',user)
-    console.log('userSchema', userSchema)
     var token =  jwt.sign(user._id.toHexString(),'secret')
     var oneHour = moment().add(1, 'hour').valueOf();
 

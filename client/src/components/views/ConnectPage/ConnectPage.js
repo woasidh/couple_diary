@@ -9,6 +9,7 @@ function ConnectPage(props) {
     const [YourCode, setYourCode] = useState("")
 
     useEffect(() => {
+        
         let randomNum = Math.random().toString(10).substr(2, 8)
         let current = new Date();
         let currentTime = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()

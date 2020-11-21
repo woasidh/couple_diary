@@ -15,7 +15,6 @@ export default function (SpecificComponent, SpecificComponent2, option, adminRou
         useEffect(() => {
             //To know my current status, send Auth request 
             dispatch(auth()).then(response => {
-
                 setIsCouple(response.payload.isCouple)
                 //Not Loggined in Status 
                 if (!response.payload.isAuth) {
