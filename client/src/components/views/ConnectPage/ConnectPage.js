@@ -33,7 +33,7 @@ function ConnectPage() {
                 <Input value ={MyCode}/>
                 <br/>
                 <br/>
-                상대방 초대코드를 받으셨나요?
+                상대방 초대코드를 받으셨나요??
                 <Input value="전달받은 초대코드 입력" />
             </div>
         </div>
