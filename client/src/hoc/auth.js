@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth } from '../_actions/user_actions';
 import { useSelector, useDispatch } from "react-redux";
 
-export default function (SpecificComponent, option, adminRoute = null) {
+export default function (SpecificComponent, SpecificComponent2, option, adminRoute = null) {
+
+    const [IsCouple, setIsCouple] = useState(false)
+
     function AuthenticationCheck(props) {
 
         let user = useSelector(state => state.user);
@@ -12,6 +15,8 @@ export default function (SpecificComponent, option, adminRoute = null) {
         useEffect(() => {
             //To know my current status, send Auth request 
             dispatch(auth()).then(response => {
+
+                setIsCouple(response.payload.isCouple)
                 //Not Loggined in Status 
                 if (!response.payload.isAuth) {
                     if (option) {
@@ -33,10 +38,15 @@ export default function (SpecificComponent, option, adminRoute = null) {
             })
 
         }, [])
-
-        return (
-            <SpecificComponent {...props} user={user} />
-        )
+        if (IsCouple) {
+            return (
+                <SpecificComponent2 {...props} user={user} />
+            )
+        }else{
+            return (
+                <SpecificComponent {...props} user={user} />
+            )
+        }
     }
     return AuthenticationCheck
 }

@@ -35,6 +35,14 @@ const userSchema = mongoose.Schema({
         type: Number
     },
     isCouple: {
+        type: Boolean,
+        default: false
+    },
+    connectToken:{
+        type: String,
+        default: ""
+    },
+    connectTokenExp:{
         type: String,
         default: ""
     }

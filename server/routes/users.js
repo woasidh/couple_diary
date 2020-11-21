@@ -18,6 +18,7 @@ router.get("/auth", auth, (req, res) => {
         lastname: req.user.lastname,
         role: req.user.role,
         image: req.user.image,
+        isCouple: req.user.isCouple
     });
 });
 
@@ -66,6 +67,24 @@ router.get("/logout", auth, (req, res) => {
             success: true
         });
     });
+});
+
+router.post("/code", auth, (req, res) => {
+    console.log(req.body)
+    //set filter
+    let filter = {
+        _id : req.user._id
+    }
+
+    //get code info from client and update from DB
+    let update = {
+        connectToken : req.body.code,
+        connectTokenExp : req.body.time
+    }
+    User.findOneAndUpdate(filter, update,{new: true}, err =>{
+            if(err) return res.status(400).send({success: false})
+            return res.status(200).send({success: true})
+        })
 });
 
 module.exports = router;
